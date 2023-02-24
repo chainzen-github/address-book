@@ -36,9 +36,9 @@ contract AddressBook {
    function removeAddress(address _deleteAddr) public {
        // adding the remove method
        // step 1 find the address that we need to remove
-       for(uint i=0 ; i <= _addresses[msg.sender].length; i++){
-        if(_addresses[_deleteAddr][i] != _deleteAddr){
-            newArray.push(_addresses[_deleteAddr][i]);
+       for(uint i = 0 ; i < _addresses[msg.sender].length - 1; i++){
+        if(_addresses[msg.sender][i] == _deleteAddr){
+            newArray.push(_addresses[msg.sender][i]);
         }
        }
        _addresses[msg.sender] = newArray;
