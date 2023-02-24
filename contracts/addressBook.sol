@@ -33,15 +33,16 @@ contract AddressBook {
    }
 
    // Remove an address from the address book and the alias book
-   function removeAddress(address _deleteAddr) public {
+   function removeAddress(address _deleteAddr, string memory _deleteAlias) public {
        // adding the remove method
        // step 1 find the address that we need to remove
        for(uint i = 0 ; i < _addresses[msg.sender].length - 1; i++){
-        if(_addresses[msg.sender][i] == _deleteAddr){
+        if(_addresses[msg.sender][i] != _deleteAddr){
             newArray.push(_addresses[msg.sender][i]);
         }
        }
        _addresses[msg.sender] = newArray;
+       delete _aliases[msg.sender][_deleteAlias];
    }
 
    function getMyAddressBook () public view returns (address[] memory){
